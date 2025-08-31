@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered PDF Tool - Interactive Project Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-[#3D405B]">PDF Tool Blueprint</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#vision" class="nav-link font-medium pb-1">Vision</a>
+                <a href="#features" class="nav-link font-medium pb-1">Features</a>
+                <a href="#ai-engine" class="nav-link font-medium pb-1">AI Engine</a>
+                <a href="#tech-stack" class="nav-link font-medium pb-1">Tech Stack</a>
+                <a href="#roadmap" class="nav-link font-medium pb-1">Roadmap</a>
+                <a href="#risks" class="nav-link font-medium pb-1">Risks</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <span class="text-3xl">☰</span>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#vision" class="block text-center py-2 px-4 text-sm hover:bg-gray-200">Vision</a>
+            <a href="#features" class="block text-center py-2 px-4 text-sm hover:bg-gray-200">Features</a>
+            <a href="#ai-engine" class="block text-center py-2 px-4 text-sm hover:bg-gray-200">AI Engine</a>
+            <a href="#tech-stack" class="block text-center py-2 px-4 text-sm hover:bg-gray-200">Tech Stack</a>
+            <a href="#roadmap" class="block text-center py-2 px-4 text-sm hover:bg-gray-200">Roadmap</a>
+            <a href="#risks" class="block text-center py-2 px-4 text-sm hover:bg-gray-200">Risks</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="vision" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">Envisioning the Next-Gen PDF Tool</h2>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600">
+                This blueprint outlines the strategic development of a comprehensive, AI-powered web application for PDF
+                manipulation. The goal is to surpass existing platforms by integrating robust open-source libraries and
+                futuristic AI features, all while leveraging a cost-effective, free-tier serverless deployment model.
+                Explore the plan for this ambitious vision.
+            </p>
+        </section>
+
+        <section id="features" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Core & Advanced Features</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">The application's foundation is a powerful suite
+                    of PDF tools, from essential manipulations to futuristic AI capabilities. Click on any feature to
+                    jump to its interactive tool.</p>
+            </div>
+            <div id="features-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            </div>
+        </section>
+
+        <section id="tool-sections-wrapper" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Interactive PDF Tools</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Upload your files and experience the power of
+                    AI-driven PDF manipulation. These tools simulate backend processing for a smooth user experience.
+                </p>
+            </div>
+
+            <div id="tool-compress-pdf" class="tool-section">
+                <h3 class="text-3xl font-bold mb-6 text-[#3D405B]">Compress PDF</h3>
+                <p class="mb-6 text-gray-600">Reduce the file size of your PDF documents while maintaining quality.
+                    Ideal for sharing and web optimization.</p>
+                <label for="compressPdfInput" class="file-input-label">
+                    <span class="text-6xl mb-4">📄</span>
+                    <span class="text-xl font-semibold text-gray-700">Drag & Drop your PDF here</span>
+                    <span class="text-gray-500 mt-2">or click to browse</span>
+                    <input type="file" id="compressPdfInput" accept="application/pdf">
+                </label>
+                <div id="compressFileName" class="mt-4 text-gray-600 text-center">No file chosen</div>
+
+                <div class="mt-6 p-4 border border-gray-200 rounded-lg">
+                    <h4 class="text-lg font-semibold mb-3">Compression Options:</h4>
+                    <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 items-center">
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="compLevelLow" name="compressionLevel" value="low" checked
+                                class="form-radio text-[#E07A5F] focus:ring-[#E07A5F]">
+                            <label for="compLevelLow" class="text-gray-700">Low (approx. 20% reduction)</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="compLevelMedium" name="compressionLevel" value="medium"
+                                class="form-radio text-[#E07A5F] focus:ring-[#E07A5F]">
+                            <label for="compLevelMedium" class="text-gray-700">Medium (approx. 50% reduction)</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="compLevelHigh" name="compressionLevel" value="high"
+                                class="form-radio text-[#E07A5F] focus:ring-[#E07A5F]">
+                            <label for="compLevelHigh" class="text-gray-700">High (approx. 80% reduction)</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="compLevelCustom" name="compressionLevel" value="custom"
+                                class="form-radio text-[#E07A5F] focus:ring-[#E07A5F]">
+                            <label for="compLevelCustom" class="text-gray-700">Custom % Reduction:</label>
+                            <input type="number" id="customCompressionPercent" min="0" max="99" value="50"
+                                class="w-20 p-1 border rounded-md text-center text-gray-700 focus:ring-[#81B29A] focus:border-[#81B29A]"
+                                disabled>
+                            <span class="text-gray-700">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8">
+                    <button id="compressPdfButton" class="btn-primary flex items-center justify-center space-x-2"
+                        disabled>
+                        <span id="compressPdfLoadingSpinner" class="loading-spinner hidden"></span>
+                        <span id="compressPdfButtonText">Compress PDF</span>
+                    </button>
+                </div>
+                <div id="compressPdfResult" class="mt-8 text-center hidden">
+                    <p class="text-lg font-semibold text-[#81B29A] mb-4">PDF Compressed Successfully!</p>
+                    <p id="compressPdfSizeInfo" class="text-gray-600 mb-4"></p>
+                    <a id="downloadCompressedPdf" href="#" download="compressed_document.pdf"
+                        class="btn-primary inline-block">Download Compressed PDF</a>
+                </div>
+                <div id="compressPdfError" class="mt-8 text-center text-red-500 hidden"></div>
+            </div>
+
+            <div id="tool-merge-split-pdf" class="tool-section">
+                <h3 class="text-3xl font-bold mb-4 text-[#3D405B]">Merge & Split PDF</h3>
+
+                <div class="border-b border-gray-200 mb-6">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button id="merge-tab"
+                            class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-lg text-[#E07A5F] border-[#E07A5F]">
+                            Merge PDFs
+                        </button>
+                        <button id="split-tab"
+                            class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-lg text-gray-500 hover:text-gray-700 hover:border-gray-300 border-transparent">
+                            Split PDF
+                        </button>
+                    </nav>
+                </div>
+
+                <div id="merge-tool-content">
+                    <p class="mb-6 text-gray-600">Combine multiple PDF files into one. Drag files to reorder them before
+                        merging.</p>
+                    <label for="mergePdfInput" class="file-input-label">
+                        <span class="text-6xl mb-4">➕</span>
+                        <span class="text-xl font-semibold text-gray-700">Drag & Drop your PDFs here</span>
+                        <span class="text-gray-500 mt-2">or click to browse (select multiple files)</span>
+                        <input type="file" id="mergePdfInput" accept="application/pdf" multiple>
+                    </label>
+                    <div id="mergeFileList" class="mt-4 space-y-2"></div>
+                    <div class="flex justify-center mt-8">
+                        <button id="mergePdfButton" class="btn-primary flex items-center justify-center space-x-2"
+                            disabled>
+                            <span id="mergePdfLoadingSpinner" class="loading-spinner hidden"></span>
+                            <span id="mergePdfButtonText">Merge PDFs</span>
+                        </button>
+                    </div>
+                    <div id="mergePdfResult" class="mt-8 text-center hidden">
+                        <p class="text-lg font-semibold text-[#81B29A] mb-4">PDFs Merged Successfully!</p>
+                        <a id="downloadMergedPdf" href="#" download="merged_document.pdf"
+                            class="btn-primary inline-block">Download Merged PDF</a>
+                    </div>
+                    <div id="mergePdfError" class="mt-8 text-center text-red-500 hidden"></div>
+                </div>
+
+                <div id="split-tool-content" class="hidden">
+                    <p class="mb-6 text-gray-600">Split a single PDF into multiple files based on page ranges.</p>
+                    <label for="splitPdfInput" class="file-input-label">
+                        <span class="text-6xl mb-4">✂️</span>
+                        <span class="text-xl font-semibold text-gray-700">Drag & Drop your PDF here</span>
+                        <span class="text-gray-500 mt-2">or click to browse</span>
+                        <input type="file" id="splitPdfInput" accept="application/pdf">
+                    </label>
+                    <div id="splitFileName" class="mt-4 text-gray-600 text-center">No file chosen</div>
+
+                    <div class="mt-6">
+                        <label for="splitRangeInput" class="block text-lg font-medium text-gray-700 text-center">Enter
+                            page ranges to extract</label>
+                        <input type="text" id="splitRangeInput"
+                            class="mt-2 block w-full max-w-md mx-auto p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#E07A5F] focus:border-[#E07A5F]"
+                            placeholder="e.g., 1, 3-5, 8">
+                        <p class="text-center text-sm text-gray-500 mt-2">Use commas to separate pages or ranges (e.g.,
+                            1-3, 5).</p>
+                    </div>
+
+                    <div class="flex justify-center items-center mt-6 space-x-2">
+                        <input type="checkbox" id="splitIndividuallyCheckbox"
+                            class="h-4 w-4 rounded border-gray-300 text-[#E07A5F] focus:ring-[#E07A5F]">
+                        <label for="splitIndividuallyCheckbox" class="text-gray-700">Split each selected page into a
+                            separate file</label>
+                    </div>
+
+                    <div class="flex justify-center mt-8">
+                        <button id="splitPdfButton" class="btn-primary flex items-center justify-center space-x-2"
+                            disabled>
+                            <span id="splitPdfLoadingSpinner" class="loading-spinner hidden"></span>
+                            <span id="splitPdfButtonText">Split PDF</span>
+                        </button>
+                    </div>
+                    <div id="splitPdfResult" class="mt-8 text-center hidden">
+                        <p class="text-lg font-semibold text-[#81B29A] mb-4">PDF Split Successfully!</p>
+                        <a id="downloadSplitPdfZip" href="#" download="split_pages.zip"
+                            class="btn-primary inline-block">Download Pages as ZIP</a>
+                    </div>
+                    <div id="splitPdfError" class="mt-8 text-center text-red-500 hidden"></div>
+                </div>
+            </div>
+
+            <div id="tool-image-to-pdf" class="tool-section">
+                <h3 class="text-3xl font-bold mb-6 text-[#3D405B]">Image to PDF</h3>
+                <p class="mb-6 text-gray-600">Convert one or multiple image files (JPG, PNG, etc.) into a single PDF
+                    document.</p>
+                <label for="imageToPdfInput" class="file-input-label">
+                    <span class="text-6xl mb-4">📸</span>
+                    <span class="text-xl font-semibold text-gray-700">Drag & Drop images here</span>
+                    <span class="text-gray-500 mt-2">or click to browse (multiple files allowed)</span>
+                    <input type="file" id="imageToPdfInput" accept="image/*" multiple>
+                </label>
+                <div id="imageToPdfFileName" class="mt-4 text-gray-600 text-center">No files chosen</div>
+                <div class="flex justify-center items-center mt-6 space-x-2">
+                    <input type="checkbox" id="fitImageToPageCheckbox"
+                        class="h-4 w-4 rounded border-gray-300 text-[#E07A5F] focus:ring-[#E07A5F]">
+                    <label for="fitImageToPageCheckbox" class="text-gray-700">Fit images onto standard A4 pages (adds
+                        margins)</label>
+                </div>
+                <div class="flex justify-center mt-8">
+                    <button id="imageToPdfButton" class="btn-primary flex items-center justify-center space-x-2"
+                        disabled>
+                        <span id="imageToPdfLoadingSpinner" class="loading-spinner hidden"></span>
+                        <span id="imageToPdfButtonText">Convert Images to PDF</span>
+                    </button>
+                </div>
+                <div id="imageToPdfResult" class="mt-8 text-center hidden">
+                    <p class="text-lg font-semibold text-[#81B29A] mb-4">Images Converted to PDF Successfully!</p>
+                    <a id="downloadImageToPdf" href="#" download="images_to_pdf.pdf"
+                        class="btn-primary inline-block">Download PDF</a>
+                </div>
+                <div id="imageToPdfError" class="mt-8 text-center text-red-500 hidden"></div>
+            </div>
+
+            <div id="tool-video-to-pdf-summary" class="tool-section">
+                <h3 class="text-3xl font-bold mb-6 text-[#3D405B]">Video to PDF Summary (AI)</h3>
+                <p class="mb-6 text-gray-600">Upload a video and let our AI summarize its content into a concise PDF
+                    document.</p>
+                <label for="videoToPdfInput" class="file-input-label">
+                    <span class="text-6xl mb-4">🎬</span>
+                    <span class="text-xl font-semibold text-gray-700">Drag & Drop your Video here</span>
+                    <span class="text-gray-500 mt-2">or click to browse (MP4, MOV, etc.)</span>
+                    <input type="file" id="videoToPdfInput" accept="video/*">
+                </label>
+                <div id="videoFileName" class="mt-4 text-gray-600 text-center">No file chosen</div>
+                <div class="flex justify-center mt-8">
+                    <button id="videoToPdfButton" class="btn-primary flex items-center justify-center space-x-2"
+                        disabled>
+                        <span id="videoToPdfLoadingSpinner" class="loading-spinner hidden"></span>
+                        <span id="videoToPdfButtonText">Summarize Video</span>
+                    </button>
+                </div>
+                <div id="videoToPdfProgress" class="mt-8 text-center text-gray-600 hidden">
+                    <p id="videoToPdfProgressText" class="mb-2"></p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="videoToPdfProgressBar" class="bg-[#E07A5F] h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div id="videoToPdfResult" class="mt-8 hidden">
+                    <p class="text-lg font-semibold text-[#81B29A] mb-4 text-center">Video Summarized Successfully!</p>
+                    <h4 class="text-xl font-semibold mb-2">Summary:</h4>
+                    <textarea id="videoSummaryText"
+                        class="w-full p-4 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#81B29A]"
+                        rows="10" readonly></textarea>
+                    <div class="flex justify-center mt-4">
+                        <a id="downloadVideoSummaryPdf" href="#" download="video_summary.pdf"
+                            class="btn-primary inline-block">Download Summary as PDF</a>
+                    </div>
+                </div>
+                <div id="videoToPdfError" class="mt-8 text-center text-red-500 hidden"></div>
+            </div>
+        </section>
+
+
+        <section id="ai-engine" class="py-16 bg-white rounded-2xl shadow-lg">
+        </section>
+
+        <section id="tech-stack" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Tech Stack & Library Deep Dive</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">The right tools are critical. This section
+                    compares deployment platforms and provides a deep dive into the recommended Python libraries for
+                    core PDF tasks, highlighting the trade-offs between them.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-center mb-4">Deployment Platform Comparison</h3>
+                    <div class="chart-container">
+                        <canvas id="platformChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-center mb-4">PDF Library Analysis (Python)</h3>
+                    <div class="chart-container">
+                        <canvas id="libraryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="py-16">
+        </section>
+
+        <section id="risks" class="py-16 bg-gray-800 text-white rounded-2xl">
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 border-t mt-16">
+        <p class="text-gray-500">Interactive Project Blueprint | Generated from Source Report</p>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
