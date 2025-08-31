@@ -284,6 +284,32 @@
                 </div>
                 <div id="videoToPdfError" class="mt-8 text-center text-red-500 hidden"></div>
             </div>
+            <div id="tool-word-to-pdf" class="tool-section">
+                <h3 class="text-3xl font-bold mb-6 text-[#3D405B]">Word to PDF</h3>
+                <p class="mb-6 text-gray-600">Convert your Microsoft Word documents (.docx) into high-quality PDF files.
+                    Note: This tool preserves text content but not complex layouts.</p>
+                <label for="wordToPdfInput" class="file-input-label">
+                    <span class="text-6xl mb-4">📜</span>
+                    <span class="text-xl font-semibold text-gray-700">Drag & Drop your Word Doc here</span>
+                    <span class="text-gray-500 mt-2">or click to browse (.docx)</span>
+                    <input type="file" id="wordToPdfInput"
+                        accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                </label>
+                <div id="wordToPdfFileName" class="mt-4 text-gray-600 text-center">No file chosen</div>
+                <div class="flex justify-center mt-8">
+                    <button id="wordToPdfButton" class="btn-primary flex items-center justify-center space-x-2"
+                        disabled>
+                        <span id="wordToPdfLoadingSpinner" class="loading-spinner hidden"></span>
+                        <span id="wordToPdfButtonText">Convert to PDF</span>
+                    </button>
+                </div>
+                <div id="wordToPdfResult" class="mt-8 text-center hidden">
+                    <p class="text-lg font-semibold text-[#81B29A] mb-4">Document Converted Successfully!</p>
+                    <a id="downloadWordToPdf" href="#" download="converted_document.pdf"
+                        class="btn-primary inline-block">Download PDF</a>
+                </div>
+                <div id="wordToPdfError" class="mt-8 text-center text-red-500 hidden"></div>
+            </div>
         </section>
 
 
